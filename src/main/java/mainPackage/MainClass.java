@@ -42,27 +42,27 @@ public class MainClass {
 //		extent = new ExtentReports (System.getProperty("user.dir") +"/test-output/STMExtentReport.html", true);
 //	}
 	
-	@AfterMethod
-	public void getResult(ITestResult result) throws Exception{
-		
-		if(result.getStatus() == ITestResult.FAILURE){
-			
-			logger.log(LogStatus.FAIL, "Test Case Failed is "+result.getName());
-			logger.log(LogStatus.FAIL, "Test Case Failed is "+result.getThrowable());
-			String screenshotPath = MainClass.getScreenshot(driver, result.getName());
-			//To add it in the extent report 
-			logger.log(LogStatus.FAIL, logger.addScreenCapture(screenshotPath));
-		}else if(result.getStatus() == ITestResult.SKIP){
-			logger.log(LogStatus.SKIP, "Test Case Skipped is "+result.getName());
-		}else if(result.getStatus() == ITestResult.SUCCESS){
-			logger.log(LogStatus.PASS, "Test Case Passed is "+result.getName());
-			//logger.log(LogStatus.PASS, "Test Case Passed is "+result.getThrowable());
-			String screenshotPath = MainClass.getScreenshot(driver, result.getName());
-			//To add it in the extent report 
-			logger.log(LogStatus.PASS, logger.addScreenCapture(screenshotPath));
-		}
-		extent.endTest(logger);
-	}
+//	@AfterMethod
+//	public void getResult(ITestResult result) throws Exception{
+//		
+//		if(result.getStatus() == ITestResult.FAILURE){
+//			
+//			logger.log(LogStatus.FAIL, "Test Case Failed is "+result.getName());
+//			logger.log(LogStatus.FAIL, "Test Case Failed is "+result.getThrowable());
+//			String screenshotPath = MainClass.getScreenshot(driver, result.getName());
+//			//To add it in the extent report 
+//			logger.log(LogStatus.FAIL, logger.addScreenCapture(screenshotPath));
+//		}else if(result.getStatus() == ITestResult.SKIP){
+//			logger.log(LogStatus.SKIP, "Test Case Skipped is "+result.getName());
+//		}else if(result.getStatus() == ITestResult.SUCCESS){
+//			logger.log(LogStatus.PASS, "Test Case Passed is "+result.getName());
+//			//logger.log(LogStatus.PASS, "Test Case Passed is "+result.getThrowable());
+//			String screenshotPath = MainClass.getScreenshot(driver, result.getName());
+//			//To add it in the extent report 
+//			logger.log(LogStatus.PASS, logger.addScreenCapture(screenshotPath));
+//		}
+//		extent.endTest(logger);
+//	}
 	
 	
 //	@AfterTest
