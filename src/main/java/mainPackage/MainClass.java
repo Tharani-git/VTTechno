@@ -30,48 +30,48 @@ public class MainClass {
 	public static WebDriver driver=null;
 	public static ExtentTest logger;
 	public static ExtentReports extent;
-//	@BeforeTest
-//	public void chromelaunch()
-//	{
-//		System.setProperty("webdriver.chrome.driver",
-//		         "D:\\TharaTechnologies\\Second_Syllabus\\Selenium\\Jars\\Driver\\Driverfinal\\chromedriver.exe");
-//		
-//		driver = new ChromeDriver();
-//		driver.manage().window().maximize();
-//		driver.get("https://www.google.com");
-//		extent = new ExtentReports (System.getProperty("user.dir") +"/test-output/STMExtentReport.html", true);
-//	}
+	@BeforeTest
+	public void chromelaunch()
+	{
+		String path=System.getProperty("user.dir");
+		System.setProperty("webdriver.chrome.driver",path+"\\src\\main\\Driver\\chromedriver.exe");
+		
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.google.com");
+		extent = new ExtentReports (System.getProperty("user.dir") +"/test-output/STMExtentReport.html", true);
+	}
 	
-//	@AfterMethod
-//	public void getResult(ITestResult result) throws Exception{
-//		
-//		if(result.getStatus() == ITestResult.FAILURE){
-//			
-//			logger.log(LogStatus.FAIL, "Test Case Failed is "+result.getName());
-//			logger.log(LogStatus.FAIL, "Test Case Failed is "+result.getThrowable());
-//			String screenshotPath = MainClass.getScreenshot(driver, result.getName());
-//			//To add it in the extent report 
-//			logger.log(LogStatus.FAIL, logger.addScreenCapture(screenshotPath));
-//		}else if(result.getStatus() == ITestResult.SKIP){
-//			logger.log(LogStatus.SKIP, "Test Case Skipped is "+result.getName());
-//		}else if(result.getStatus() == ITestResult.SUCCESS){
-//			logger.log(LogStatus.PASS, "Test Case Passed is "+result.getName());
-//			//logger.log(LogStatus.PASS, "Test Case Passed is "+result.getThrowable());
-//			String screenshotPath = MainClass.getScreenshot(driver, result.getName());
-//			//To add it in the extent report 
-//			logger.log(LogStatus.PASS, logger.addScreenCapture(screenshotPath));
-//		}
-//		extent.endTest(logger);
-//	}
+	@AfterMethod
+	public void getResult(ITestResult result) throws Exception{
+		
+		if(result.getStatus() == ITestResult.FAILURE){
+			
+			logger.log(LogStatus.FAIL, "Test Case Failed is "+result.getName());
+			logger.log(LogStatus.FAIL, "Test Case Failed is "+result.getThrowable());
+			String screenshotPath = MainClass.getScreenshot(driver, result.getName());
+			//To add it in the extent report 
+			logger.log(LogStatus.FAIL, logger.addScreenCapture(screenshotPath));
+		}else if(result.getStatus() == ITestResult.SKIP){
+			logger.log(LogStatus.SKIP, "Test Case Skipped is "+result.getName());
+		}else if(result.getStatus() == ITestResult.SUCCESS){
+			logger.log(LogStatus.PASS, "Test Case Passed is "+result.getName());
+			//logger.log(LogStatus.PASS, "Test Case Passed is "+result.getThrowable());
+			String screenshotPath = MainClass.getScreenshot(driver, result.getName());
+			//To add it in the extent report 
+			logger.log(LogStatus.PASS, logger.addScreenCapture(screenshotPath));
+		}
+		extent.endTest(logger);
+	}
 	
 	
-//	@AfterTest
-//	public void driverclose()
-//	{
-//	driver.close();
-//	 extent.flush();
-//     extent.close();
-//	}
+	@AfterTest
+	public void driverclose()
+	{
+	driver.close();
+	 extent.flush();
+     extent.close();
+	}
 	
 	public Object[][] getExcelData(String excelName, String sheetName){
 		String excelLocation = System.getProperty("user.dir")+"/src/main/resources/"+excelName;
